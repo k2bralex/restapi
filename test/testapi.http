@@ -1,0 +1,81 @@
+GET http://localhost:8080/users
+Content-Type: application/json
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+###
+
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{"name":"User11","age":24,"friends":[]}
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 201, "Response status is not 201");
+    });
+%}
+
+###
+
+PATCH http://localhost:8080/users/1001
+Content-Type: application/
+
+{"age": 32}
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+###
+
+DELETE http://localhost:8080/users/1008
+Content-Type: application/
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 204, "Response status is not 204");
+    });
+%}
+
+###
+
+PUT http://localhost:8080/users/1001/friends
+Content-Type: application/json
+
+{"id": 1002}
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+###
+
+GET http://localhost:8080/users/1001/friends
+Content-Type: application/json
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+###
+
+DELETE http://localhost:8080/users/1001/friends/1002
+Content-Type: application/
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 204, "Response status is not 204");
+    });
+%}
+
+###
